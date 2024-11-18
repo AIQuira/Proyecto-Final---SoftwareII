@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ProyectoApiRestRevisionApplication<proyecto_api_rest_revision>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.edu.unicauca.isii.ProyectoApiRestRevisionApplication",
+            "projectName": "proyecto_api_rest_revision",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
