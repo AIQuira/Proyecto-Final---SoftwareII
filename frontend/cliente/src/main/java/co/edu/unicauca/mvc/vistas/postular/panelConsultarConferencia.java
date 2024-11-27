@@ -121,8 +121,10 @@ public class panelConsultarConferencia extends javax.swing.JFrame {
         if (nombre.isEmpty() || fecha.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un nombre o una fecha para buscar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         return;
-           
-    }
+        }
+        
+        //List<Conferencia> conferenciasEncontradas = buscarConferencias(nombre, fecha);
+        
        
     }//GEN-LAST:event_jButtonConsultarConferenciaActionPerformed
 

@@ -21,7 +21,7 @@ public class ConferenceRepository {
      * Constructor que inicializa la lista de conferencias
      */
     public List<ConferenceEntity> findAll() {
-        System.out.println("Invocando a Listar Clientes");
+        System.out.println("Invocando a Listar Conferencias");
         return this.listaConferencias;
     }
 
@@ -32,7 +32,7 @@ public class ConferenceRepository {
      * @return
      */
     public ConferenceEntity findById(Integer id) {
-        System.out.println("Invocando a buscar Cliente por Id");
+        System.out.println("Invocando a buscar cliente por Id");
         ConferenceEntity objConference = null;
 
         for (ConferenceEntity conference : listaConferencias) {
@@ -45,6 +45,33 @@ public class ConferenceRepository {
         return objConference;
     }
 
+    public ConferenceEntity findByName(String nombre) {
+        System.out.println("Invocando a buscar conferencia por nombre");
+        ConferenceEntity objConference = null;
+
+        for (ConferenceEntity conference : listaConferencias) {
+            if (conference.getNombre().equals(nombre)) {
+                objConference = conference;
+                break;
+            }
+        }
+
+        return objConference;
+    }
+
+    public ConferenceEntity findByfecha(String fecha) {
+        System.out.println("Invocando a buscar conferencia por fecha");
+        ConferenceEntity objConference = null;
+
+        for (ConferenceEntity conference : listaConferencias) {
+            if (conference.getFecha().equals(fecha)) {
+                objConference = conference;
+                break;
+            }
+        }
+
+        return objConference;
+    }
     /**
      * Guarda una conferencia
      * 
@@ -52,7 +79,7 @@ public class ConferenceRepository {
      * @return
      */
     public ConferenceEntity save(ConferenceEntity conference) {
-        System.out.println("Invocando a guardar Cliente");
+        System.out.println("Invocando a guardar Conferencia");
         ConferenceEntity objConference = null;
 
         if (this.listaConferencias.add(conference)) {

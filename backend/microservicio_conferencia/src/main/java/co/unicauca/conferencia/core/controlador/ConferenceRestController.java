@@ -35,6 +35,16 @@ public class ConferenceRestController {
         return ConferenceService.findById(id);
     }
 
+    @GetMapping("/conferences/{nombre}")
+    public ConferenceDTO getConferenceByName(@PathVariable String nombre) {
+        return ConferenceService.findByName(nombre);
+    }
+
+    @GetMapping("/conferences/{fecha}")
+    public ConferenceDTO getConferenceByDate(@PathVariable String fecha) {
+        return ConferenceService.findByDate(fecha);
+    }
+
     @DeleteMapping("/conferences/{id}")
     public Boolean eliminarConferencia(@PathVariable Integer id) {
         Boolean bandera = false;
