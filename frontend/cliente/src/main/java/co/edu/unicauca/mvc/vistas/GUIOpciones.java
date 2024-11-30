@@ -68,7 +68,6 @@ public class GUIOpciones extends javax.swing.JFrame {
         btnEvaluar = new javax.swing.JButton();
         btnPostular1 = new javax.swing.JButton();
         btnCrearConferencia = new javax.swing.JButton();
-        btnConsultarConferencias = new javax.swing.JButton();
         panelBusqueda = new javax.swing.JPanel();
         btnDesplegar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -112,14 +111,6 @@ public class GUIOpciones extends javax.swing.JFrame {
             }
         });
 
-        btnConsultarConferencias.setBackground(new java.awt.Color(236, 236, 236));
-        btnConsultarConferencias.setText("Consultar Conferencias");
-        btnConsultarConferencias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarConferenciasActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout barraMenuLayout = new javax.swing.GroupLayout(barraMenu);
         barraMenu.setLayout(barraMenuLayout);
         barraMenuLayout.setHorizontalGroup(
@@ -127,7 +118,6 @@ public class GUIOpciones extends javax.swing.JFrame {
             .addComponent(btnPostular1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
             .addComponent(btnEvaluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnCrearConferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnConsultarConferencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         barraMenuLayout.setVerticalGroup(
             barraMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,8 +128,6 @@ public class GUIOpciones extends javax.swing.JFrame {
                 .addComponent(btnEvaluar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCrearConferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConsultarConferencias, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -300,15 +288,10 @@ public class GUIOpciones extends javax.swing.JFrame {
         mostrarPanel(new panelCrearConferencia(objServicioConferencia));
     }//GEN-LAST:event_btnCrearConferenciaActionPerformed
 
-    private void btnConsultarConferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarConferenciasActionPerformed
-        //mostrarPanel
-    }//GEN-LAST:event_btnConsultarConferenciasActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel barraMenu;
     private javax.swing.JPanel baseContenido;
-    private javax.swing.JButton btnConsultarConferencias;
     private javax.swing.JButton btnCrearConferencia;
     private javax.swing.JButton btnDesplegar;
     private javax.swing.JButton btnEvaluar;
