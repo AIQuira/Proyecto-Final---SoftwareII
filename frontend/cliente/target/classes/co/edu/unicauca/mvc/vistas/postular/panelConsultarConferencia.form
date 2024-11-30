@@ -148,6 +148,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Listado conferencias"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonListadoConferenciasActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

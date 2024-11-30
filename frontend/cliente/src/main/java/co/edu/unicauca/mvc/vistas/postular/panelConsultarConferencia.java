@@ -1,7 +1,10 @@
 
 package co.edu.unicauca.mvc.vistas.postular;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import co.edu.unicauca.mvc.modelos.Conferencia;
+import co.edu.unicauca.isii.services.ConferenciaServices;
 
 /**
  *
@@ -9,9 +12,9 @@ import javax.swing.JOptionPane;
  */
 public class panelConsultarConferencia extends javax.swing.JFrame {
 
-    /**
-     * Creates new form panelConsultarConferencia
-     */
+    
+    private ConferenciaServices servicioConferencia;
+  
     public panelConsultarConferencia() {
         initComponents();
     }
@@ -61,6 +64,11 @@ public class panelConsultarConferencia extends javax.swing.JFrame {
         jButtonListadoConferencias.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
         jButtonListadoConferencias.setForeground(new java.awt.Color(255, 255, 255));
         jButtonListadoConferencias.setText("Listado conferencias");
+        jButtonListadoConferencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListadoConferenciasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,6 +135,13 @@ public class panelConsultarConferencia extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_jButtonConsultarConferenciaActionPerformed
+
+    private void jButtonListadoConferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoConferenciasActionPerformed
+        panelListarConferencias objpanelListarConferencias= 
+                new panelListarConferencias(this.servicioConferencia);
+        objpanelListarConferencias.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        objpanelListarConferencias.setVisible(true);
+    }//GEN-LAST:event_jButtonListadoConferenciasActionPerformed
 
     /**
      * @param args the command line arguments

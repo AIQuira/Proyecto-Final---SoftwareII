@@ -12,14 +12,14 @@ public class Conferencia {
     private Date fechaInicio;
     private Date fechaFin;   
     private float costoInscripcion;
-    
+    private String ponente;
     private Organizador organizador;
     
     public Conferencia(){
         
     }
 
-    public Conferencia(int idConferencia, String nombre, String lugar, String tema, String descripcion, String contacto, Date fechaInicio, Date fechaFin, float costoInscripcion, Organizador organizador) {
+    public Conferencia(int idConferencia, String nombre, String lugar, String tema, String descripcion, String contacto, Date fechaInicio, Date fechaFin, float costoInscripcion, Organizador organizador, String ponente) {
         this.idConferencia = idConferencia;
         this.nombre = nombre;
         this.lugar = lugar;
@@ -30,6 +30,7 @@ public class Conferencia {
         this.fechaFin = fechaFin;
         this.costoInscripcion = costoInscripcion;
         this.organizador = organizador;
+        this.ponente = ponente;
     }
 
     public int getIdConferencia() {
@@ -104,6 +105,14 @@ public class Conferencia {
 
     public void setCostoInscripcion(float costoInscripcion) {
         this.costoInscripcion = costoInscripcion;
+    }
+    
+     public String getPonente() {
+        return ponente;
+    }
+
+    public void setPonente(String ponente) {
+        this.ponente = ponente;
     }
     
     @Override
