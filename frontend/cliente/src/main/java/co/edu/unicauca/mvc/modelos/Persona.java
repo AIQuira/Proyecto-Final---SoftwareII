@@ -2,10 +2,11 @@ package co.edu.unicauca.mvc.modelos;
 
 public class Persona {
 
-    private int cedula;
     private String nombre;
+    private String apellido;
+    private int cedula;
     private String correo;
-    private String password;
+    private String contra;
     private int telefono;
     private int rol;
     
@@ -13,11 +14,18 @@ public class Persona {
         
     }
 
+    public Persona(String nombre, String apellido, int cedula, String correo, String contra) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.contra = contra;
+    }
+    
     public Persona(int cedula, String nombre, String correo, String password, int telefono, int rol) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.correo = correo;
-        this.password = password;
+        this.contra = password;
         this.telefono = telefono;
         this.rol = rol;
     }
@@ -47,11 +55,11 @@ public class Persona {
     }
 
     public String getPassword() {
-        return password;
+        return contra;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.contra = password;
     }
 
     public int getTelefono() {

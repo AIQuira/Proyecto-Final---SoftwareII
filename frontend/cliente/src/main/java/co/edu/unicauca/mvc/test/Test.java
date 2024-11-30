@@ -4,6 +4,7 @@ import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.ConferenciaServices;
 import co.edu.unicauca.isii.services.RevisionServices;
 import co.edu.unicauca.mvc.vistas.GUIOpciones;
+import co.edu.unicauca.mvc.vistas.login.panelAcceder;
 import javax.swing.UIManager;
 
 public class Test {

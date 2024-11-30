@@ -4,6 +4,7 @@ import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.ConferenciaServices;
 import co.edu.unicauca.isii.services.RevisionServices;
 import co.edu.unicauca.mvc.vistas.evaluar.panelArticulosAsignados;
+import co.edu.unicauca.mvc.vistas.login.panelAcceder;
 import co.edu.unicauca.mvc.vistas.postular.panelCrearConferencia;
 import co.edu.unicauca.mvc.vistas.postular.panelSubirArticulo;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
@@ -18,7 +19,8 @@ import javax.swing.Timer;
  * @author earea
  */
 public class GUIOpciones extends javax.swing.JFrame {
-    private boolean barraVisible = true; // Inicialmente la barra es visible
+    private boolean barraVisible = false; // Inicialmente la barra es visible
+    private boolean usuarioAutenticado = false;
     // Declaración de Timer para las animaciones
     private Timer timer;
     private ArticuloServices objServicioArticulos;
@@ -30,19 +32,25 @@ public class GUIOpciones extends javax.swing.JFrame {
      */
     public GUIOpciones(ArticuloServices objServicioArticulos, RevisionServices objServicioRevision, ConferenciaServices objServicioConferencia) {
         initComponents();
-        barraVisible = true;
+        barraMenu.setVisible(false);
         this.objServicioArticulos = objServicioArticulos;
         this.objServicioRevision = objServicioRevision;
         this.objServicioConferencia = objServicioConferencia;
+        
+        mostrarPanel(new panelAcceder(this));
     }
-
+    // Método para actualizar el estado de autenticación
+    public void setUsuarioAutenticado(boolean autenticado) {
+        this.usuarioAutenticado = autenticado;
+        if (autenticado) {
+            mostrarBarraMenu(); // Mostrar la barra lateral si el usuario se autenticó
+        }
+    }
+    // Verificar el estado de autenticación
+    private boolean estaAutenticado() {
+        return usuarioAutenticado;
+    }
     
-//    private void initStyles(){
-//        lConferencias.putClientProperty( "FlatLaf.styleClass", "h1" );
-//        lConferencias.putClientProperty("FlatLaf.style", "front:18 $light.font");
-//        lConferencias.setForeground(Color.black);
-//    }
-//    
     public void mostrarPanel(JPanel p) {
     p.setSize(620, 400);  // Asegúrate de que el tamaño sea correcto para tu layout
     p.setLocation(0, 0);
@@ -273,19 +281,27 @@ public class GUIOpciones extends javax.swing.JFrame {
 
     
     private void btnPostular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostular1ActionPerformed
-
-        mostrarPanel(new panelSubirArticulo(objServicioArticulos));
+        if (estaAutenticado()) {
+            mostrarPanel(new panelSubirArticulo(objServicioArticulos));
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe iniciar sesión primero.", "Acceso denegado", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnPostular1ActionPerformed
 
     private void btnEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvaluarActionPerformed
-        // TODO add your handling code here:
-        //mostrarPanel(new panelArticulosAsignados(objServicioArticulos));
-        //mostrarPanel(new panelSubirArticulo()); // Muestra el panel de subir artículo
-         mostrarPanel(new panelArticulosAsignados(objServicioArticulos, objServicioRevision)); // Muestra el panel de artículos asignados
+        if (estaAutenticado()) {
+            mostrarPanel(new panelArticulosAsignados(objServicioArticulos, objServicioRevision));
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe iniciar sesión primero.", "Acceso denegado", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnEvaluarActionPerformed
 
     private void btnCrearConferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConferenciaActionPerformed
-        mostrarPanel(new panelCrearConferencia(objServicioConferencia));
+        if (estaAutenticado()) {
+            mostrarPanel(new panelCrearConferencia(objServicioConferencia));
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe iniciar sesión primero.", "Acceso denegado", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnCrearConferenciaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
