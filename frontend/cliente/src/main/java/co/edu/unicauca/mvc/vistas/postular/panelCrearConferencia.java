@@ -1,5 +1,6 @@
 package co.edu.unicauca.mvc.vistas.postular;
 
+import co.edu.unicauca.isii.services.ConferenciaServices;
 import co.edu.unicauca.mvc.utilidades.Funciones;
 import static co.edu.unicauca.mvc.utilidades.Funciones.verificarCampo;
 import java.util.Objects;
@@ -12,11 +13,13 @@ import javax.swing.JOptionPane;
  */
 public class panelCrearConferencia extends javax.swing.JPanel {
 
+    private ConferenciaServices servicioConferencia;
     /**
      * Creates new form panelCrearConferencia
      */
-    public panelCrearConferencia() {
+    public panelCrearConferencia(ConferenciaServices servicioConferencia) {
         initComponents();
+         this.servicioConferencia = servicioConferencia;
     }
 
     /**

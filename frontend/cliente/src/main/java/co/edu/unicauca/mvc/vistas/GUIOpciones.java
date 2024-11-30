@@ -1,8 +1,10 @@
 package co.edu.unicauca.mvc.vistas;
 
 import co.edu.unicauca.isii.services.ArticuloServices;
+import co.edu.unicauca.isii.services.ConferenciaServices;
 import co.edu.unicauca.isii.services.RevisionServices;
 import co.edu.unicauca.mvc.vistas.evaluar.panelArticulosAsignados;
+import co.edu.unicauca.mvc.vistas.postular.panelCrearConferencia;
 import co.edu.unicauca.mvc.vistas.postular.panelSubirArticulo;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import java.awt.BorderLayout;
@@ -21,15 +23,17 @@ public class GUIOpciones extends javax.swing.JFrame {
     private Timer timer;
     private ArticuloServices objServicioArticulos;
     private RevisionServices objServicioRevision;
+    private ConferenciaServices objServicioConferencia;
     
     /**
      * Creates new form GUIOpcioness
      */
-    public GUIOpciones(ArticuloServices objServicioArticulos, RevisionServices objServicioRevision) {
+    public GUIOpciones(ArticuloServices objServicioArticulos, RevisionServices objServicioRevision, ConferenciaServices objServicioConferencia) {
         initComponents();
         barraVisible = true;
         this.objServicioArticulos = objServicioArticulos;
         this.objServicioRevision = objServicioRevision;
+        this.objServicioConferencia = objServicioConferencia;
     }
 
     
@@ -63,6 +67,8 @@ public class GUIOpciones extends javax.swing.JFrame {
         barraMenu = new javax.swing.JPanel();
         btnEvaluar = new javax.swing.JButton();
         btnPostular1 = new javax.swing.JButton();
+        btnCrearConferencia = new javax.swing.JButton();
+        btnConsultarConferencias = new javax.swing.JButton();
         panelBusqueda = new javax.swing.JPanel();
         btnDesplegar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -98,12 +104,30 @@ public class GUIOpciones extends javax.swing.JFrame {
             }
         });
 
+        btnCrearConferencia.setBackground(new java.awt.Color(236, 236, 236));
+        btnCrearConferencia.setText("Conferencias");
+        btnCrearConferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearConferenciaActionPerformed(evt);
+            }
+        });
+
+        btnConsultarConferencias.setBackground(new java.awt.Color(236, 236, 236));
+        btnConsultarConferencias.setText("Consultar Conferencias");
+        btnConsultarConferencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarConferenciasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout barraMenuLayout = new javax.swing.GroupLayout(barraMenu);
         barraMenu.setLayout(barraMenuLayout);
         barraMenuLayout.setHorizontalGroup(
             barraMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnPostular1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
             .addComponent(btnEvaluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnCrearConferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnConsultarConferencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         barraMenuLayout.setVerticalGroup(
             barraMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +136,11 @@ public class GUIOpciones extends javax.swing.JFrame {
                 .addComponent(btnPostular1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEvaluar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCrearConferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConsultarConferencias, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelBusqueda.setBackground(new java.awt.Color(145, 173, 180));
@@ -161,7 +189,7 @@ public class GUIOpciones extends javax.swing.JFrame {
 
         baseContenido.setBackground(new java.awt.Color(236, 236, 236));
         baseContenido.setPreferredSize(new java.awt.Dimension(620, 400));
-        baseContenido.setLayout(new java.awt.GridLayout());
+        baseContenido.setLayout(new java.awt.GridLayout(1, 0));
 
         contenido.setBackground(new java.awt.Color(236, 236, 236));
         contenido.setLayout(new java.awt.GridLayout(1, 0));
@@ -268,10 +296,20 @@ public class GUIOpciones extends javax.swing.JFrame {
          mostrarPanel(new panelArticulosAsignados(objServicioArticulos, objServicioRevision)); // Muestra el panel de artículos asignados
     }//GEN-LAST:event_btnEvaluarActionPerformed
 
+    private void btnCrearConferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConferenciaActionPerformed
+        mostrarPanel(new panelCrearConferencia(objServicioConferencia));
+    }//GEN-LAST:event_btnCrearConferenciaActionPerformed
+
+    private void btnConsultarConferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarConferenciasActionPerformed
+        //mostrarPanel
+    }//GEN-LAST:event_btnConsultarConferenciasActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel barraMenu;
     private javax.swing.JPanel baseContenido;
+    private javax.swing.JButton btnConsultarConferencias;
+    private javax.swing.JButton btnCrearConferencia;
     private javax.swing.JButton btnDesplegar;
     private javax.swing.JButton btnEvaluar;
     private javax.swing.JButton btnPostular1;

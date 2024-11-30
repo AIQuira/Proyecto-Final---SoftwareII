@@ -15,8 +15,9 @@ public class panelConsultarConferencia extends javax.swing.JFrame {
     
     private ConferenciaServices servicioConferencia;
   
-    public panelConsultarConferencia() {
+    public panelConsultarConferencia(ConferenciaServices servicioConferencia) {
         initComponents();
+        
     }
 
     /**
