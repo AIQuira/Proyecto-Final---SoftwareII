@@ -5,12 +5,14 @@ co\edu\unicauca\mvc\utilidades\UtilidadesBotones.class
 co\edu\unicauca\mvc\vistas\GUIOpciones$4.class
 co\edu\unicauca\mvc\utilidades\Utilidades.class
 co\edu\unicauca\mvc\utilidades\Funciones.class
+co\edu\unicauca\mvc\vistas\asignarrevisor\panelSeleccionarConferencia.class
 co\edu\unicauca\mvc\vistas\login\panelAcceder$1.class
 co\edu\unicauca\mvc\vistas\GUIOpciones$1.class
 co\edu\unicauca\mvc\vistas\evaluar\panelEvaluacion$1.class
 co\edu\unicauca\mvc\modelos\Persona.class
 co\edu\unicauca\mvc\modelos\Revisor.class
 co\edu\unicauca\mvc\vistas\evaluar\panelArticulosAsignados.class
+co\edu\unicauca\mvc\vistas\GUIOpciones$7.class
 co\edu\unicauca\mvc\vistas\GUIOpciones.class
 co\edu\unicauca\isii\services\ArticuloServices.class
 co\edu\unicauca\isii\services\RevisorServices$1.class

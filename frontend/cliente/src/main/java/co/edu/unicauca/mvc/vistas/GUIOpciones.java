@@ -3,11 +3,11 @@ package co.edu.unicauca.mvc.vistas;
 import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.ConferenciaServices;
 import co.edu.unicauca.isii.services.RevisionServices;
+import co.edu.unicauca.mvc.vistas.asignarrevisor.panelSeleccionarConferencia;
 import co.edu.unicauca.mvc.vistas.evaluar.panelArticulosAsignados;
 import co.edu.unicauca.mvc.vistas.login.panelAcceder;
 import co.edu.unicauca.mvc.vistas.postular.panelCrearConferencia;
 import co.edu.unicauca.mvc.vistas.postular.panelSubirArticulo;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -61,7 +61,6 @@ public class GUIOpciones extends javax.swing.JFrame {
     contenido.repaint();  // Redibuja para que se vea el nuevo contenido
     }
 
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,6 +75,7 @@ public class GUIOpciones extends javax.swing.JFrame {
         btnEvaluar = new javax.swing.JButton();
         btnPostular1 = new javax.swing.JButton();
         btnCrearConferencia = new javax.swing.JButton();
+        btnAsignarRevisor = new javax.swing.JButton();
         panelBusqueda = new javax.swing.JPanel();
         btnDesplegar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -119,6 +119,14 @@ public class GUIOpciones extends javax.swing.JFrame {
             }
         });
 
+        btnAsignarRevisor.setBackground(new java.awt.Color(236, 236, 236));
+        btnAsignarRevisor.setText("Asignar Revisores");
+        btnAsignarRevisor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsignarRevisorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout barraMenuLayout = new javax.swing.GroupLayout(barraMenu);
         barraMenu.setLayout(barraMenuLayout);
         barraMenuLayout.setHorizontalGroup(
@@ -126,6 +134,7 @@ public class GUIOpciones extends javax.swing.JFrame {
             .addComponent(btnPostular1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
             .addComponent(btnEvaluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnCrearConferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnAsignarRevisor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         barraMenuLayout.setVerticalGroup(
             barraMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,6 +145,8 @@ public class GUIOpciones extends javax.swing.JFrame {
                 .addComponent(btnEvaluar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCrearConferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAsignarRevisor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -163,7 +174,7 @@ public class GUIOpciones extends javax.swing.JFrame {
             .addGroup(panelBusquedaLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(btnDesplegar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 568, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 694, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel3)
@@ -199,7 +210,7 @@ public class GUIOpciones extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addComponent(barraMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(baseContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
+                .addComponent(baseContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
                 .addContainerGap())
         );
         backgroundLayout.setVerticalGroup(
@@ -207,7 +218,7 @@ public class GUIOpciones extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addComponent(panelBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(baseContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addComponent(baseContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
@@ -277,8 +288,6 @@ public class GUIOpciones extends javax.swing.JFrame {
         });
         timer.start(); // Inicia el Timer para la animación
     }
-
-
     
     private void btnPostular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostular1ActionPerformed
         if (estaAutenticado()) {
@@ -304,10 +313,19 @@ public class GUIOpciones extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCrearConferenciaActionPerformed
 
+    private void btnAsignarRevisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarRevisorActionPerformed
+        if (estaAutenticado()) {
+            mostrarPanel(new panelSeleccionarConferencia(objServicioConferencia));
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe iniciar sesión primero.", "Acceso denegado", javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAsignarRevisorActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel barraMenu;
     private javax.swing.JPanel baseContenido;
+    private javax.swing.JButton btnAsignarRevisor;
     private javax.swing.JButton btnCrearConferencia;
     private javax.swing.JButton btnDesplegar;
     private javax.swing.JButton btnEvaluar;
