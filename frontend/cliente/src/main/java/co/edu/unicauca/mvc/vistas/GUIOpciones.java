@@ -3,7 +3,7 @@ package co.edu.unicauca.mvc.vistas;
 import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.ConferenciaServices;
 import co.edu.unicauca.isii.services.RevisionServices;
-import co.edu.unicauca.mvc.vistas.asignarrevisor.panelSeleccionarConferencia;
+import co.edu.unicauca.mvc.vistas.asignarrevisor.panelSeleccionarArticulo;
 import co.edu.unicauca.mvc.vistas.evaluar.panelArticulosAsignados;
 import co.edu.unicauca.mvc.vistas.login.panelAcceder;
 import co.edu.unicauca.mvc.vistas.postular.panelCrearConferencia;
@@ -315,7 +315,7 @@ public class GUIOpciones extends javax.swing.JFrame {
 
     private void btnAsignarRevisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarRevisorActionPerformed
         if (estaAutenticado()) {
-            mostrarPanel(new panelSeleccionarConferencia(objServicioConferencia));
+            mostrarPanel(new panelSeleccionarArticulo(objServicioArticulos));
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe iniciar sesión primero.", "Acceso denegado", javax.swing.JOptionPane.WARNING_MESSAGE);
         }

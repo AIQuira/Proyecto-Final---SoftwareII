@@ -2,9 +2,10 @@ package co.edu.unicauca.mvc.vistas.asignarrevisor;
 
 //import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
 
-import co.edu.unicauca.isii.services.ConferenciaServices;
-import co.edu.unicauca.mvc.modelos.Conferencia;
-import co.edu.unicauca.mvc.vistas.login.*;
+import co.edu.unicauca.isii.services.ArticuloServices;
+import co.edu.unicauca.mvc.modelos.Articulo;
+import co.edu.unicauca.mvc.vistas.GUIOpciones;
+import co.edu.unicauca.mvc.vistas.asignarrevisor.panelAsignarRevisor;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 //import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
@@ -13,44 +14,44 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author earea
  */
-public class panelSeleccionarConferencia extends javax.swing.JPanel {
+public class panelSeleccionarArticulo extends javax.swing.JPanel {
 
-    private ConferenciaServices servicioConferencia;
+    private ArticuloServices servicioArticulo;
     
     /**
      * Creates new form panelListarConferencias
      */
-    public panelSeleccionarConferencia(ConferenciaServices servicioConferencia) {
+    public panelSeleccionarArticulo(ArticuloServices servicioArticulo) {
         initComponents();
-        this.servicioConferencia = servicioConferencia;
+        this.servicioArticulo = servicioArticulo;
         iniciarlizarTabla();
         llenarTabla();
     }
 
     private void iniciarlizarTabla() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Tema");      
-        model.addColumn("Nombre");    
+        model.addColumn("Nombre");      
         model.addColumn("Descripción"); 
-        this.jTableListadoConferencias.setModel(model);
+        model.addColumn("Resumen"); 
+        this.jTableListadoArticulos.setModel(model);
     }
 
     private void llenarTabla() {
-        DefaultTableModel model = (DefaultTableModel) this.jTableListadoConferencias.getModel();
+        DefaultTableModel model = (DefaultTableModel) this.jTableListadoArticulos.getModel();
         limpiarTabla(); // Limpia las filas existentes
-        ArrayList<Conferencia> listaConferencias = (ArrayList<Conferencia>) this.servicioConferencia.listarConferencias();
+        ArrayList<Articulo> listaArticulos = (ArrayList<Articulo>) this.servicioArticulo.listarArticulos();
 
-        if (listaConferencias.isEmpty()) {
+        if (listaArticulos.isEmpty()) {
             // Si no hay conferencias, muestra un mensaje en el JLabel
             textoListado.setText("En este momento no hay conferencias para asignar revisor.");
         } else {
             // Si hay conferencias, actualiza el texto
             textoListado.setText("Haz doble click en la conferencia para asignarle un revisor.");
-            for (Conferencia conferencia : listaConferencias) {
+            for (Articulo articulo : listaArticulos) {
                 String[] fila = {
-                    conferencia.getTema(),      
-                    conferencia.getNombre(),      
-                    conferencia.getDescripcion()  
+                    articulo.getTitulo(),      
+                    articulo.getDescripcion(),
+                    articulo.getResumen()
                 };
                 model.addRow(fila);
             }
@@ -58,13 +59,32 @@ public class panelSeleccionarConferencia extends javax.swing.JPanel {
     }
 
     public void limpiarTabla(){
-        DefaultTableModel modelo=(DefaultTableModel) this.jTableListadoConferencias.getModel();
-        int filas=this.jTableListadoConferencias.getRowCount();
+        DefaultTableModel modelo=(DefaultTableModel) this.jTableListadoArticulos.getModel();
+        int filas=this.jTableListadoArticulos.getRowCount();
         for (int i = 0;filas>i; i++) {
             modelo.removeRow(0);
         }
     }
 
+    private void addTableClickListener() {
+        jTableListadoArticulos.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (evt.getClickCount() == 2) {
+                    // Obtener la fila seleccionada
+                    int selectedRow = jTableListadoArticulos.getSelectedRow();
+                    if (selectedRow != -1) {
+                        // Cambia al panel de asignar revisor sin pasar datos explícitos
+                        panelAsignarRevisor panelAsignarRevisor = new panelAsignarRevisor(servicioArticulo);
+                        GUIOpciones guiOpciones = (GUIOpciones) javax.swing.SwingUtilities.getWindowAncestor(panelSeleccionarArticulo.this);
+                        guiOpciones.mostrarPanel(panelAsignarRevisor);
+                    } else {
+                        javax.swing.JOptionPane.showMessageDialog(panelSeleccionarArticulo.this, "Por favor selecciona una fila válida.");
+                    }
+                }
+            }
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,7 +97,7 @@ public class panelSeleccionarConferencia extends javax.swing.JPanel {
         espacioConfes = new javax.swing.JPanel();
         jPanelCentral = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableListadoConferencias = new javax.swing.JTable();
+        jTableListadoArticulos = new javax.swing.JTable();
         jPanelsuperior = new javax.swing.JPanel();
         jLabelListadoConferencias = new javax.swing.JLabel();
         textoListado = new javax.swing.JLabel();
@@ -90,10 +110,10 @@ public class panelSeleccionarConferencia extends javax.swing.JPanel {
 
         jPanelCentral.setBackground(new java.awt.Color(236, 236, 236));
 
-        jTableListadoConferencias.setBackground(new java.awt.Color(236, 236, 236));
-        jTableListadoConferencias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(145, 173, 180)));
-        jTableListadoConferencias.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
-        jTableListadoConferencias.setModel(new javax.swing.table.DefaultTableModel(
+        jTableListadoArticulos.setBackground(new java.awt.Color(236, 236, 236));
+        jTableListadoArticulos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(145, 173, 180)));
+        jTableListadoArticulos.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
+        jTableListadoArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -104,32 +124,32 @@ public class panelSeleccionarConferencia extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", ""
             }
         ));
-        jScrollPane1.setViewportView(jTableListadoConferencias);
+        jScrollPane1.setViewportView(jTableListadoArticulos);
 
         javax.swing.GroupLayout jPanelCentralLayout = new javax.swing.GroupLayout(jPanelCentral);
         jPanelCentral.setLayout(jPanelCentralLayout);
         jPanelCentralLayout.setHorizontalGroup(
             jPanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCentralLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1)
+                .addGap(58, 58, 58))
         );
         jPanelCentralLayout.setVerticalGroup(
             jPanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCentralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         jPanelsuperior.setBackground(new java.awt.Color(236, 236, 236));
 
         jLabelListadoConferencias.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 18)); // NOI18N
         jLabelListadoConferencias.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelListadoConferencias.setText("Listado conferencias");
+        jLabelListadoConferencias.setText("Listado artículos");
 
-        textoListado.setText("Haz doble click en la conferencia para asignarle un revisor.");
+        textoListado.setText("Haz doble click en el artículo para asignarle un revisor.");
 
         javax.swing.GroupLayout jPanelsuperiorLayout = new javax.swing.GroupLayout(jPanelsuperior);
         jPanelsuperior.setLayout(jPanelsuperiorLayout);
@@ -139,19 +159,19 @@ public class panelSeleccionarConferencia extends javax.swing.JPanel {
                 .addGroup(jPanelsuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelsuperiorLayout.createSequentialGroup()
                         .addGap(173, 173, 173)
-                        .addComponent(jLabelListadoConferencias))
+                        .addComponent(jLabelListadoConferencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelsuperiorLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(textoListado)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(textoListado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(183, 183, 183))
         );
         jPanelsuperiorLayout.setVerticalGroup(
             jPanelsuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelsuperiorLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jLabelListadoConferencias)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(textoListado))
+                .addComponent(jLabelListadoConferencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(textoListado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout espacioConfesLayout = new javax.swing.GroupLayout(espacioConfes);
@@ -169,10 +189,10 @@ public class panelSeleccionarConferencia extends javax.swing.JPanel {
             espacioConfesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(espacioConfesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelsuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelsuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(63, 63, 63))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -184,8 +204,8 @@ public class panelSeleccionarConferencia extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(espacioConfes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(espacioConfes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -196,7 +216,7 @@ public class panelSeleccionarConferencia extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelCentral;
     private javax.swing.JPanel jPanelsuperior;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableListadoConferencias;
+    private javax.swing.JTable jTableListadoArticulos;
     private javax.swing.JLabel textoListado;
     // End of variables declaration//GEN-END:variables
 }

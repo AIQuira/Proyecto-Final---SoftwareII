@@ -23,6 +23,7 @@ co\edu\unicauca\mvc\vistas\postular\panelCrearConferencia$1.class
 co\edu\unicauca\isii\services\ArticuloServices$1.class
 co\edu\unicauca\mvc\modelos\Articulo.class
 co\edu\unicauca\mvc\vistas\login\panelRegistrar$2.class
+co\edu\unicauca\mvc\vistas\asignarrevisor\panelAsignarRevisor.class
 co\edu\unicauca\isii\services\RevisionServices$2.class
 co\edu\unicauca\mvc\vistas\postular\panelSubirArticulo$3.class
 co\edu\unicauca\mvc\modelos\Conferencia.class
