@@ -76,5 +76,17 @@ public class ConferenceServiceImpl implements IConferenceService
 
     }
 
+    @Override
+    public ConferenceDTO findByName(String nombre) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByName'");
+    }
+
+    @Override
+    public ConferenceDTO findByDate(String fecha) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByDate'");
+    }
+
 
 }

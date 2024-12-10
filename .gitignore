@@ -3,6 +3,7 @@ frontend/nbproject/
 frontend/build/
 frontend/dist/
 frontend/*.class
+frontend/cliente/target/*.class
 
 # Ignorar archivos y carpetas específicos de Visual Studio Code
 backend/.vscode/
