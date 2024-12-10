@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "MicroservicioNotificacionesApplication",
+            "request": "launch",
+            "mainClass": "co.edu.unicauca.microservicio_notificaciones.MicroservicioNotificacionesApplication",
+            "projectName": "correo"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CorreoApplication<correo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.edu.unicauca.correo.CorreoApplication",
+            "projectName": "correo",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
