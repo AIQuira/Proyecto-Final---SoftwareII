@@ -25,6 +25,7 @@ public class ArticuloEntity {
     private Integer calificacionKeyword;
     private List<RevisorEntity> listaRevisores;
     private IEstado estado = new EstadoBorrador();
+    private int tipoMecanismoComunicacion;
 
     // Constructor sin calificaciones (para cuando el autor envía el artículo inicialmente)
     public ArticuloEntity(int idArticulo, String titulo, String descripcion, String resumen, String keyword, List<RevisorEntity> listaRevisores) {

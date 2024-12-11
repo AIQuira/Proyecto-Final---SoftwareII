@@ -2,18 +2,11 @@
     "configurations": [
         {
             "type": "java",
-            "name": "MicroservicioNotificacionesApplication",
-            "request": "launch",
-            "mainClass": "co.edu.unicauca.microservicio_notificaciones.MicroservicioNotificacionesApplication",
-            "projectName": "correo"
-        },
-        {
-            "type": "java",
-            "name": "Spring Boot-CorreoApplication<correo>",
+            "name": "Spring Boot-MicroservicioNotificacionesApplication<microservicio_notificaciones>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "mainClass": "co.edu.unicauca.correo.CorreoApplication",
-            "projectName": "correo",
+            "mainClass": "co.edu.unicauca.microservicio_notificaciones.microservicio_notificaciones.MicroservicioNotificacionesApplication",
+            "projectName": "microservicio_notificaciones",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
