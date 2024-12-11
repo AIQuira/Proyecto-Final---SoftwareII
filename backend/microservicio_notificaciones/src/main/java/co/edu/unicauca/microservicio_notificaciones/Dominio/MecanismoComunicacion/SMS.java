@@ -1,4 +1,4 @@
-package co.edu.unicauca.microservicio_notificaciones.Dominio.MecanismoComunicacion;
+package main.java.co.edu.unicauca.microservicio_notificaciones.Dominio.MecanismoComunicacion;
 
 public class SMS implements MecanismoComunicacion {
     @Override

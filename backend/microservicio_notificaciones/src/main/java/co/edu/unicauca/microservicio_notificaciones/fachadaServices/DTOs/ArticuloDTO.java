@@ -12,6 +12,7 @@ public class ArticuloDTO {
     private String descripcion;
     private String resumen;
     private String keyword;
+    private String tipoMecanismoComunicacion;
     	
     public ArticuloDTO(){
 

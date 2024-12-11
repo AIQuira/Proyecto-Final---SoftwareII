@@ -20,7 +20,7 @@ public class MessageConsumer {
     }
 
     @RabbitListener(queues = "temacorreo")
-    public void receiveMessage(ArticuloDTO objArticuloCreado, int tipoMecanismo) {
+    public void receiveMessage(ArticuloDTO objArticuloCreado) {
         System.out.println("Datos del articulo");
         System.out.println("Titulo: "+objArticuloCreado.getTitulo());
         System.out.println("Descripcion: "+objArticuloCreado.getDescripcion());
@@ -34,9 +34,9 @@ public class MessageConsumer {
                 + "Keyword: " + objArticuloCreado.getKeyword();
 
         String receptor = "";
-
+        int tipoMecanismo = objArticuloCreado.getTipoMecanismoComunicacion();
         //Generar el mecanismo de comunicacion
         MecanismoComunicacion mecanismoComunicacion = builder.generarMecanismoComunicacion(tipoMecanismo);
-        mecanismoComunicacion.enviarNotificacion(mensaje, receptor);
+        mecanismoComunicacion.enviarNotificacion(mensaje, tipoMecanismo);
     }
 }
