@@ -24,7 +24,7 @@ public class ConferenciaServices {
     private Client client;
     
     public ConferenciaServices () {
-        this.endPoint = "http://localhost:8085/api/conferences";
+        this.endPoint = "http://localhost:2702/api/conferences";
         this.client = ClientBuilder.newClient().register(new JacksonFeature());
     }
 

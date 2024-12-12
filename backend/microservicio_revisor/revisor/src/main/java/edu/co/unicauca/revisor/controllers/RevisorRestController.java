@@ -12,6 +12,7 @@ import edu.co.unicauca.revisor.facadeServices.services.IRevisorService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -21,6 +22,13 @@ public class RevisorRestController {
 
     @Autowired
     private IRevisorService revisorService;
+
+    @PostMapping("/revisores")
+    public RevisorDTO crearRevisor(@RequestBody RevisorDTO revisor) {
+        RevisorDTO objRevisor = null;
+        objRevisor = revisorService.save(revisor);
+        return objRevisor;
+    }
 
     @GetMapping("/revisores")
     public List<RevisorDTO> listarRevisores() {
