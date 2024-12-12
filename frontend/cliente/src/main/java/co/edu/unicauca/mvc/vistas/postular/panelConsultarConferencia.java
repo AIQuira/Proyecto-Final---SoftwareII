@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import co.edu.unicauca.mvc.modelos.Conferencia;
 import co.edu.unicauca.isii.services.ConferenciaServices;
+import co.edu.unicauca.isii.services.ServicesFacade;
 
 /**
  *
@@ -13,11 +14,11 @@ import co.edu.unicauca.isii.services.ConferenciaServices;
 public class panelConsultarConferencia extends javax.swing.JFrame {
 
     
-    private ConferenciaServices servicioConferencia;
+    private ServicesFacade servicesFacade;
   
-    public panelConsultarConferencia(ConferenciaServices servicioConferencia) {
+    public panelConsultarConferencia(ServicesFacade servicesFacade) {
         initComponents();
-        
+        this.servicesFacade = servicesFacade;
     }
 
     /**
@@ -139,7 +140,7 @@ public class panelConsultarConferencia extends javax.swing.JFrame {
 
     private void jButtonListadoConferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoConferenciasActionPerformed
         panelListarConferencias objpanelListarConferencias= 
-                new panelListarConferencias(this.servicioConferencia);
+                new panelListarConferencias(this.servicesFacade);
         objpanelListarConferencias.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         objpanelListarConferencias.setVisible(true);
     }//GEN-LAST:event_jButtonListadoConferenciasActionPerformed

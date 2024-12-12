@@ -3,6 +3,7 @@ package co.edu.unicauca.mvc.test;
 import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.ConferenciaServices;
 import co.edu.unicauca.isii.services.RevisionServices;
+import co.edu.unicauca.isii.services.ServicesFacade;
 import co.edu.unicauca.mvc.vistas.GUIOpciones;
 import co.edu.unicauca.mvc.vistas.login.panelAcceder;
 import javax.swing.UIManager;
@@ -17,10 +18,12 @@ public class Test {
         RevisionServices servicioRevision = new RevisionServices();
         ConferenciaServices servicioConferencia = new ConferenciaServices();
         
+        ServicesFacade servicesFacade = new ServicesFacade();
+        
         // Crear e inicializar la interfaz de usuario en el hilo de eventos de Swing
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUIOpciones gui = new GUIOpciones(servicioArticulo,servicioRevision, servicioConferencia); // Crea una instancia de GUIOpciones
+                GUIOpciones gui = new GUIOpciones(servicesFacade); // Crea una instancia de GUIOpciones
                 gui.setVisible(true); // Hace visible la ventana
             }
         });

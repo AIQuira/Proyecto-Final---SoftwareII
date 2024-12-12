@@ -2,6 +2,7 @@ package co.edu.unicauca.mvc.vistas.evaluar;
 
 import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.RevisionServices;
+import co.edu.unicauca.isii.services.ServicesFacade;
 import co.edu.unicauca.mvc.modelos.Articulo;
 import co.edu.unicauca.mvc.modelos.Revisor;
 import co.edu.unicauca.mvc.vistas.GUIOpciones;
@@ -13,21 +14,18 @@ import java.util.stream.Collectors;
  */
 public class panelArticuloEspecifico extends javax.swing.JPanel {
 
-    private ArticuloServices objServicioArticulos;
-    private RevisionServices objServicioRevision;
+    private ServicesFacade servicesFacade;
     private Articulo articulo; // Variable para almacenar el artículo que se cargará
 
     /**
      * Creates new form panelConferenciaEspecifica
-     * @param objServicioArticulos
+     * @param servicesFacade 
      * @param idArticulo
-     * @param objServicioRevision
      */
 
-    public panelArticuloEspecifico(ArticuloServices objServicioArticulos, int idArticulo, RevisionServices objServicioRevision) {
+    public panelArticuloEspecifico(ServicesFacade servicesFacade, int idArticulo) {
         initComponents();
-        this.objServicioArticulos = objServicioArticulos;
-        this.objServicioRevision = objServicioRevision;
+        this.servicesFacade = servicesFacade;
         cargarArticulo(idArticulo);
     }
 
@@ -37,7 +35,7 @@ public class panelArticuloEspecifico extends javax.swing.JPanel {
     }
     
     private void cargarArticulo (int idArticulo){
-        this.articulo = objServicioArticulos.consultarArticulo(idArticulo);
+        this.articulo = servicesFacade.consultarArticulo(idArticulo);
         cargarDatosArticulo();
     }
 
@@ -377,7 +375,7 @@ public class panelArticuloEspecifico extends javax.swing.JPanel {
     private void btnEvaluarConfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvaluarConfeActionPerformed
         String nombreConferencia = txtNomConfe.getText(); // Obtenemos el nombre de la conferencia
         GUIOpciones gui = (GUIOpciones) getTopLevelAncestor(); // Obtenemos la referencia de la ventana principal
-        gui.mostrarPanel(new panelEvaluacion(nombreConferencia, objServicioRevision, objServicioArticulos, articulo.getIdArticulo())); // Mostramos el panel de evaluación con el nombre de la conferencia
+        gui.mostrarPanel(new panelEvaluacion(nombreConferencia, servicesFacade, articulo.getIdArticulo())); // Mostramos el panel de evaluación con el nombre de la conferencia
     }//GEN-LAST:event_btnEvaluarConfeActionPerformed
 
 

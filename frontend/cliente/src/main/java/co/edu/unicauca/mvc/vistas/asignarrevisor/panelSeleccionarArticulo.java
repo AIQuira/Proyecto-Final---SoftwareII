@@ -3,6 +3,7 @@ package co.edu.unicauca.mvc.vistas.asignarrevisor;
 //import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
 
 import co.edu.unicauca.isii.services.ArticuloServices;
+import co.edu.unicauca.isii.services.ServicesFacade;
 import co.edu.unicauca.mvc.modelos.Articulo;
 import co.edu.unicauca.mvc.vistas.GUIOpciones;
 import co.edu.unicauca.mvc.vistas.asignarrevisor.panelAsignarRevisor;
@@ -16,14 +17,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class panelSeleccionarArticulo extends javax.swing.JPanel {
 
-    private ArticuloServices servicioArticulo;
+    private ServicesFacade servicesFacade;
     
     /**
      * Creates new form panelListarConferencias
      */
-    public panelSeleccionarArticulo(ArticuloServices servicioArticulo) {
+    public panelSeleccionarArticulo(ServicesFacade servicesFacade) {
         initComponents();
-        this.servicioArticulo = servicioArticulo;
+        this.servicesFacade = servicesFacade;
         iniciarlizarTabla();
         llenarTabla();
     }
@@ -39,7 +40,7 @@ public class panelSeleccionarArticulo extends javax.swing.JPanel {
     private void llenarTabla() {
         DefaultTableModel model = (DefaultTableModel) this.jTableListadoArticulos.getModel();
         limpiarTabla(); // Limpia las filas existentes
-        ArrayList<Articulo> listaArticulos = (ArrayList<Articulo>) this.servicioArticulo.listarArticulos();
+        ArrayList<Articulo> listaArticulos = (ArrayList<Articulo>) this.servicesFacade.listarArticulos();
 
         if (listaArticulos.isEmpty()) {
             // Si no hay conferencias, muestra un mensaje en el JLabel
@@ -75,7 +76,7 @@ public class panelSeleccionarArticulo extends javax.swing.JPanel {
                     int selectedRow = jTableListadoArticulos.getSelectedRow();
                     if (selectedRow != -1) {
                         // Cambia al panel de asignar revisor sin pasar datos explícitos
-                        panelAsignarRevisor panelAsignarRevisor = new panelAsignarRevisor(servicioArticulo);
+                        panelAsignarRevisor panelAsignarRevisor = new panelAsignarRevisor(servicesFacade);
                         GUIOpciones guiOpciones = (GUIOpciones) javax.swing.SwingUtilities.getWindowAncestor(panelSeleccionarArticulo.this);
                         guiOpciones.mostrarPanel(panelAsignarRevisor);
                     } else {

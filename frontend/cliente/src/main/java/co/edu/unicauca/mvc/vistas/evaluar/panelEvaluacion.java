@@ -3,6 +3,7 @@ package co.edu.unicauca.mvc.vistas.evaluar;
 //import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
 import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.RevisionServices;
+import co.edu.unicauca.isii.services.ServicesFacade;
 import co.edu.unicauca.mvc.modelos.Articulo;
 import co.edu.unicauca.mvc.modelos.Revision;
 import co.edu.unicauca.mvc.utilidades.Utilidades;
@@ -17,20 +18,18 @@ import javax.swing.JOptionPane;
  */
 public class panelEvaluacion extends javax.swing.JPanel {
 
-    private RevisionServices objServicioRevision;
-    private ArticuloServices objServicioArticulos;
+    private ServicesFacade servicesFacade;
     private Articulo articulo;
     /**
      * Creates new form panelEvaluacion
      * @param nombreConferencia
      * @param objServicioRevision
      */
-    public panelEvaluacion(String nombreConferencia, RevisionServices objServicioRevision, ArticuloServices objServicioArticulos, int idArticulo) {
+    public panelEvaluacion(String nombreConferencia, ServicesFacade servicesFacade,int idArticulo) {
         initComponents();
         txtNomConfeE.setText(nombreConferencia);
-        this.objServicioRevision = objServicioRevision;
-        this.objServicioArticulos = objServicioArticulos;
-        this.articulo = objServicioArticulos.consultarArticulo(idArticulo);
+        this.servicesFacade = servicesFacade;
+        this.articulo = servicesFacade.consultarArticulo(idArticulo);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -300,7 +299,7 @@ public class panelEvaluacion extends javax.swing.JPanel {
         
         System.out.println(objRevision.getArticuloId());
         
-        Revision objRevisionRegistrada = this.objServicioRevision.registrarRevision(objRevision);
+        Revision objRevisionRegistrada = this.servicesFacade.registrarRevision(objRevision);
         
         if(objRevisionRegistrada != null){
             JOptionPane.showMessageDialog(this, "Revisión guardada exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);

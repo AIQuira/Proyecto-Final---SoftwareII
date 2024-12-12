@@ -4,6 +4,7 @@ package co.edu.unicauca.mvc.vistas.asignarrevisor;
 
 import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.RevisorServices;
+import co.edu.unicauca.isii.services.ServicesFacade;
 import co.edu.unicauca.mvc.modelos.Revisor;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -15,16 +16,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class panelAsignarRevisor extends javax.swing.JPanel {
 
-    private RevisorServices servicioRevisor;
-    private ArticuloServices servicioArticulo;
+    private ServicesFacade servicesFacade;
     
     /**
      * Creates new form panelAsignarRevisor
      */
-    public panelAsignarRevisor(ArticuloServices servicioArticulo) {
+    public panelAsignarRevisor(ServicesFacade servicesFacade) {
         initComponents();
-        this.servicioRevisor = servicioRevisor;
-        this.servicioArticulo = servicioArticulo;
+        this.servicesFacade = servicesFacade;
         iniciarlizarTabla();
         llenarTabla();
     }
@@ -39,7 +38,7 @@ public class panelAsignarRevisor extends javax.swing.JPanel {
     private void llenarTabla() {
         DefaultTableModel model = (DefaultTableModel) this.jTableListadoRevisores.getModel();
         limpiarTabla(); 
-        ArrayList<Revisor> listaRevisores = (ArrayList<Revisor>) this.servicioRevisor.listarRevisores();
+        ArrayList<Revisor> listaRevisores = (ArrayList<Revisor>) this.servicesFacade.listarRevisores();
 
         if (listaRevisores.isEmpty()) {
             // Si no hay conferencias, muestra un mensaje en el JLabel

@@ -1,8 +1,12 @@
 package co.edu.unicauca.mvc.vistas.postular;
 
-import co.edu.unicauca.isii.services.ConferenciaServices;
+import co.edu.unicauca.isii.services.ServicesFacade;
+import co.edu.unicauca.mvc.modelos.Conferencia;
 import co.edu.unicauca.mvc.utilidades.Funciones;
 import static co.edu.unicauca.mvc.utilidades.Funciones.verificarCampo;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 import java.util.stream.Stream;
 import javax.swing.JFrame;
@@ -14,13 +18,14 @@ import javax.swing.JOptionPane;
  */
 public class panelCrearConferencia extends javax.swing.JPanel {
 
-    private ConferenciaServices servicioConferencia;
+    private ServicesFacade servicesFacade;
+
     /**
      * Creates new form panelCrearConferencia
      */
-    public panelCrearConferencia(ConferenciaServices servicioConferencia) {
+    public panelCrearConferencia(ServicesFacade servicesFacade) {
         initComponents();
-         this.servicioConferencia = servicioConferencia;
+        this.servicesFacade = servicesFacade;
     }
 
     /**
@@ -214,19 +219,38 @@ public class panelCrearConferencia extends javax.swing.JPanel {
         String tema = jTextFieldTema.getText();
         String descripcion = jTextFieldDescripcion.getText();
         String ponentes = jTextFieldPonentes.getText();
-        String fechaInicio = jTextFieldFechaInicio.getText();
-        String fechaFin = jTextFieldFechaFin.getText();
-   
-        // Validar que los campos no estén vacíos
-        if (nombre.isEmpty() || tema.isEmpty() || descripcion.isEmpty() || ponentes.isEmpty() || fechaInicio.isEmpty() || fechaFin.isEmpty()) {
-            return; // Detener la ejecución si hay campos vacíos
-    }
+        String fechaInicioStr = jTextFieldFechaInicio.getText();
+        String fechaFinStr = jTextFieldFechaFin.getText();
 
-         // Simular el proceso de registro
-        boolean registroExitoso = true; // Aquí podrías llamar a una función que guarde los datos en una base de datos
+        // Validar que los campos no estén vacíos
+        if (nombre.isEmpty() || tema.isEmpty() || descripcion.isEmpty() || ponentes.isEmpty() || fechaInicioStr.isEmpty() || fechaFinStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Detener la ejecución si hay campos vacíos
+        }
+        
+        //Convertir las fechas de String a Date
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaInicio = null;
+        Date fechaFin = null;
+        try{
+            fechaInicio = formatter.parse(fechaInicioStr);
+            fechaFin = formatter.parse(fechaFinStr);
+        } catch (ParseException e) {
+            JOptionPane.showConfirmDialog(this, "Formato de fecha incorrecto. Use dd/MM/yyyyy", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        Conferencia conferencia = new Conferencia();
+        conferencia.setNombre(nombre);
+        conferencia.setTema(tema);
+        conferencia.setDescripcion(descripcion);
+        conferencia.setPonente(ponentes);
+        conferencia.setFechaInicio(fechaInicio);
+        conferencia.setFechaFin(fechaFin);
+
+        Conferencia registrada = servicesFacade.registraConferencia(conferencia);
 
         // Mostrar mensaje según el resultado del registro
-        if (registroExitoso) {
+        if (registrada != null) {
             JOptionPane.showMessageDialog(this, "La conferencia ha sido creada exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Error al crear la conferencia", "Error", JOptionPane.ERROR_MESSAGE);
@@ -234,15 +258,14 @@ public class panelCrearConferencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
-        panelConsultarConferencia objpanelConsultarConferencia= 
-                new panelConsultarConferencia(this.servicioConferencia);
+        panelConsultarConferencia objpanelConsultarConferencia = new panelConsultarConferencia(this.servicesFacade);
         objpanelConsultarConferencia.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         objpanelConsultarConferencia.setVisible(true);
     }//GEN-LAST:event_jButtonConsultarActionPerformed
-    
+
     private void mostrarErrorConferenciaRegistrada() {
-    JOptionPane.showMessageDialog(null, "La conferencia ya se encuentra registrada", "Información", JOptionPane.WARNING_MESSAGE);
-}
+        JOptionPane.showMessageDialog(null, "La conferencia ya se encuentra registrada", "Información", JOptionPane.WARNING_MESSAGE);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConsultar;

@@ -3,6 +3,7 @@ package co.edu.unicauca.mvc.vistas;
 import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.ConferenciaServices;
 import co.edu.unicauca.isii.services.RevisionServices;
+import co.edu.unicauca.isii.services.ServicesFacade;
 import co.edu.unicauca.mvc.vistas.asignarrevisor.panelSeleccionarArticulo;
 import co.edu.unicauca.mvc.vistas.evaluar.panelArticulosAsignados;
 import co.edu.unicauca.mvc.vistas.login.panelAcceder;
@@ -23,19 +24,15 @@ public class GUIOpciones extends javax.swing.JFrame {
     private boolean usuarioAutenticado = false;
     // Declaración de Timer para las animaciones
     private Timer timer;
-    private ArticuloServices objServicioArticulos;
-    private RevisionServices objServicioRevision;
-    private ConferenciaServices objServicioConferencia;
+    private ServicesFacade servicesFacade;
     
     /**
      * Creates new form GUIOpcioness
      */
-    public GUIOpciones(ArticuloServices objServicioArticulos, RevisionServices objServicioRevision, ConferenciaServices objServicioConferencia) {
+    public GUIOpciones(ServicesFacade servicesFacade) {
         initComponents();
         barraMenu.setVisible(false);
-        this.objServicioArticulos = objServicioArticulos;
-        this.objServicioRevision = objServicioRevision;
-        this.objServicioConferencia = objServicioConferencia;
+        this.servicesFacade = servicesFacade;
         
         mostrarPanel(new panelAcceder(this));
     }
@@ -291,7 +288,7 @@ public class GUIOpciones extends javax.swing.JFrame {
     
     private void btnPostular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostular1ActionPerformed
         if (estaAutenticado()) {
-            mostrarPanel(new panelSubirArticulo(objServicioArticulos));
+            mostrarPanel(new panelSubirArticulo(servicesFacade));
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe iniciar sesión primero.", "Acceso denegado", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
@@ -299,7 +296,7 @@ public class GUIOpciones extends javax.swing.JFrame {
 
     private void btnEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvaluarActionPerformed
         if (estaAutenticado()) {
-            mostrarPanel(new panelArticulosAsignados(objServicioArticulos, objServicioRevision));
+            mostrarPanel(new panelArticulosAsignados(servicesFacade));
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe iniciar sesión primero.", "Acceso denegado", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
@@ -307,7 +304,7 @@ public class GUIOpciones extends javax.swing.JFrame {
 
     private void btnCrearConferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearConferenciaActionPerformed
         if (estaAutenticado()) {
-            mostrarPanel(new panelCrearConferencia(objServicioConferencia));
+            mostrarPanel(new panelCrearConferencia(this.servicesFacade));
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe iniciar sesión primero.", "Acceso denegado", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
@@ -315,7 +312,7 @@ public class GUIOpciones extends javax.swing.JFrame {
 
     private void btnAsignarRevisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarRevisorActionPerformed
         if (estaAutenticado()) {
-            mostrarPanel(new panelSeleccionarArticulo(objServicioArticulos));
+            mostrarPanel(new panelSeleccionarArticulo(this.servicesFacade));
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe iniciar sesión primero.", "Acceso denegado", javax.swing.JOptionPane.WARNING_MESSAGE);
         }

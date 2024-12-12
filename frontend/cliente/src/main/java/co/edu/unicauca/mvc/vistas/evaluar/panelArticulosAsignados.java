@@ -3,6 +3,7 @@ package co.edu.unicauca.mvc.vistas.evaluar;
 //import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
 import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.RevisionServices;
+import co.edu.unicauca.isii.services.ServicesFacade;
 import co.edu.unicauca.mvc.modelos.Articulo;
 import co.edu.unicauca.mvc.modelos.Conferencia;
 import co.edu.unicauca.mvc.vistas.GUIOpciones;
@@ -23,22 +24,20 @@ import javax.swing.JButton;
  */
 public class panelArticulosAsignados extends javax.swing.JPanel {
 
-    private final ArticuloServices objServicioArticulos;
-    private RevisionServices objServicioRevision;
+    private ServicesFacade servicesFacade;
     /**
      * Creates new form Principal
      * @param objServicioArticulos
      */
-    public panelArticulosAsignados(ArticuloServices objServicioArticulos, RevisionServices objServicioRevision) {
+    public panelArticulosAsignados(ServicesFacade servicesFacade) {
         initComponents();
-        this.objServicioArticulos = objServicioArticulos;
-        this.objServicioRevision = objServicioRevision;
+        this.servicesFacade = servicesFacade;
         mostrarConferencias();
     }
 
     // Obtención de conferencias y agrega los botones dinámicamente
     private void mostrarConferencias() {
-        List<Articulo> listaArticulos = objServicioArticulos.listarArticulos();
+        List<Articulo> listaArticulos = servicesFacade.listarArticulos();
 
         jPanel2.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -80,7 +79,7 @@ public class panelArticulosAsignados extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     GUIOpciones gui = (GUIOpciones) getTopLevelAncestor(); // Obtenemos la referencia de la ventana principal
-                    gui.mostrarPanel(new panelArticuloEspecifico(objServicioArticulos, articulo.getIdArticulo(), objServicioRevision));
+                    gui.mostrarPanel(new panelArticuloEspecifico(servicesFacade, articulo.getIdArticulo()));
                 }
             });
         }

@@ -27,6 +27,15 @@ public class ConferenciaServices {
         this.endPoint = "http://localhost:8085/api/conferences";
         this.client = ClientBuilder.newClient().register(new JacksonFeature());
     }
+
+    public Conferencia registrarConferencia(Conferencia objConferenciaRegistrar) {
+        Conferencia objConferencia = null;
+        WebTarget target = this.client.target(this.endPoint);
+        Entity<Conferencia> data = Entity.entity(objConferenciaRegistrar, MediaType.APPLICATION_JSON_TYPE);
+        Invocation.Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
+        objConferencia = objPeticion.post(data, Conferencia.class);
+        return objConferencia;
+    }
     
     public Conferencia consultarConferencia(Integer id) {
         Conferencia objConferencia = null;

@@ -10,3 +10,4 @@ backend/.vscode/
 backend/node_modules/
 backend/dist/
 backend/*.log
+frontend/cliente/target/classes/co/edu/unicauca/isii/services/ArticuloServices$1.class

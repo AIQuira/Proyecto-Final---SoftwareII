@@ -22,6 +22,15 @@ public class RevisorServices {
         this.endPoint = "http://localhost:8085/api/revisor";
         this.client = ClientBuilder.newClient().register(new JacksonFeature());
     }
+
+    public Revisor registrarRevisor(Revisor objRevisorRegistrar) {
+        Revisor objRevisor = null;
+        WebTarget target = this.client.target(this.endPoint);
+        Entity<Revisor> data = Entity.entity(objRevisorRegistrar, MediaType.APPLICATION_JSON_TYPE);
+        Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
+        objRevisor = objPeticion.post(data, Revisor.class);
+        return objRevisor;
+    }
     
     public Revisor consultarRevisor(Integer id) {
         Revisor objRevisor = null;

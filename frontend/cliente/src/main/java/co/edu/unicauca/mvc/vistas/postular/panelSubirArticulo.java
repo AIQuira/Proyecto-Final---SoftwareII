@@ -1,6 +1,6 @@
 package co.edu.unicauca.mvc.vistas.postular;
 
-import co.edu.unicauca.isii.services.ArticuloServices;
+import co.edu.unicauca.isii.services.ServicesFacade;
 import co.edu.unicauca.mvc.modelos.Articulo;
 import static co.edu.unicauca.mvc.utilidades.Funciones.verificarCampo;
 import javax.swing.JOptionPane;
@@ -11,11 +11,11 @@ import javax.swing.JOptionPane;
  */
 public class panelSubirArticulo extends javax.swing.JPanel {
 
-    private ArticuloServices objServicioArticulos;
+    private ServicesFacade servicesFacade;
 
-    public panelSubirArticulo(ArticuloServices objServicioArticulos) {
+    public panelSubirArticulo(ServicesFacade servicesFacade) {
         initComponents();
-        this.objServicioArticulos = objServicioArticulos;
+        this.servicesFacade = servicesFacade;
     }
 
     /**
@@ -209,7 +209,7 @@ public class panelSubirArticulo extends javax.swing.JPanel {
         Articulo objArticulo = new Articulo(titulo, resumen, palabrasClave,"En revision",descripcion);
         objArticulo.setIdArticulo(1);
 
-        Articulo objArticuloRegistrado = this.objServicioArticulos.registrarArticulo(objArticulo);
+        Articulo objArticuloRegistrado = this.servicesFacade.registraArticulo(objArticulo);
 
         if(!verificarCampo(titulo) || !verificarCampo(resumen) || !verificarCampo(palabrasClave)|| !verificarCampo(palabrasClave)){
             return;

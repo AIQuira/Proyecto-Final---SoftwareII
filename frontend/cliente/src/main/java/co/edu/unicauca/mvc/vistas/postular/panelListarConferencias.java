@@ -2,6 +2,7 @@
 package co.edu.unicauca.mvc.vistas.postular;
 
 import co.edu.unicauca.isii.services.ConferenciaServices;
+import co.edu.unicauca.isii.services.ServicesFacade;
 import co.edu.unicauca.mvc.modelos.Conferencia;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,14 +15,14 @@ import javax.swing.table.DefaultTableModel;
 public class panelListarConferencias extends javax.swing.JInternalFrame {
 
     
-    private ConferenciaServices servicioConferencia;
+    private ServicesFacade servicesFacade;
     
     /**
      * Creates new form panelListarConferencias
      */
-    public panelListarConferencias(ConferenciaServices servicioConferencia) {
+    public panelListarConferencias(ServicesFacade servicesFacade) {
         initComponents();
-        this.servicioConferencia = servicioConferencia;
+        this.servicesFacade = servicesFacade;
         iniciarlizarTabla();
         llenarTabla();
     }
@@ -51,7 +52,7 @@ public class panelListarConferencias extends javax.swing.JInternalFrame {
     {
         DefaultTableModel model=(DefaultTableModel) this.jTableListadoConferencias.getModel();
         limpiarTabla();
-        ArrayList<Conferencia> listaConferencias= (ArrayList<Conferencia>) this.servicioConferencia.listarConferencias();
+        ArrayList<Conferencia> listaConferencias= (ArrayList<Conferencia>) this.servicesFacade.listarConferencias();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
        
         for (int i = 0; i < listaConferencias.size(); i++) {

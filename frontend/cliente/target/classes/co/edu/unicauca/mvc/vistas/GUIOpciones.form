@@ -47,7 +47,7 @@
               <Group type="102" attributes="0">
                   <Component id="barraMenu" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="baseContenido" pref="683" max="32767" attributes="0"/>
+                  <Component id="baseContenido" pref="809" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -57,7 +57,7 @@
               <Group type="102" attributes="0">
                   <Component id="panelBusqueda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="baseContenido" pref="427" max="32767" attributes="0"/>
+                  <Component id="baseContenido" pref="351" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
@@ -81,6 +81,7 @@
                   <Component id="btnPostular1" alignment="0" pref="171" max="32767" attributes="0"/>
                   <Component id="btnEvaluar" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnCrearConferencia" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnAsignarRevisor" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -92,6 +93,8 @@
                       <Component id="btnEvaluar" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnCrearConferencia" min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnAsignarRevisor" min="-2" pref="45" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -149,6 +152,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearConferenciaActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnAsignarRevisor">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ec" green="ec" red="ec" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Asignar Revisores"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAsignarRevisorActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelBusqueda">
@@ -164,7 +178,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="btnDesplegar" min="-2" pref="29" max="-2" attributes="0"/>
-                      <EmptySpace pref="568" max="32767" attributes="0"/>
+                      <EmptySpace pref="694" max="32767" attributes="0"/>
                       <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
