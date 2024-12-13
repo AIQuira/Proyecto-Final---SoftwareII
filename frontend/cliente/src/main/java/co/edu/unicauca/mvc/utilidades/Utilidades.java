@@ -3,7 +3,6 @@ package co.edu.unicauca.mvc.utilidades;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
-import utilidades.CargarImagenes;
 
 public class Utilidades {
 

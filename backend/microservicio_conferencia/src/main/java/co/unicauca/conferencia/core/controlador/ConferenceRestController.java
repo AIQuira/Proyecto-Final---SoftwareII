@@ -43,12 +43,12 @@ public class ConferenceRestController {
         return ConferenceService.findById(id);
     }
 
-    @GetMapping("/conferences/{nombre}")
+    @GetMapping("/conferences/buscarNombre/{nombre}")
     public ConferenceDTO getConferenceByName(@PathVariable String nombre) {
         return ConferenceService.findByName(nombre);
     }
 
-    @GetMapping("/conferences/{fecha}")
+    @GetMapping("/conferences/buscarFecha/{fecha}")
     public ConferenceDTO getConferenceByDate(@PathVariable String fecha) {
         return ConferenceService.findByDate(fecha);
     }

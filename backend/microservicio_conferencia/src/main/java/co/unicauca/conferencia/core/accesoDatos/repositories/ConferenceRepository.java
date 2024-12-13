@@ -59,12 +59,12 @@ public class ConferenceRepository {
         return objConference;
     }
 
-    public ConferenceEntity findByfecha(String fecha) {
+    public ConferenceEntity findByfecha(String fechaInicio) {
         System.out.println("Invocando a buscar conferencia por fecha");
         ConferenceEntity objConference = null;
 
         for (ConferenceEntity conference : listaConferencias) {
-            if (conference.getFecha().equals(fecha)) {
+            if (conference.getFechaInicio().equals(fechaInicio)) {
                 objConference = conference;
                 break;
             }
@@ -131,14 +131,14 @@ public class ConferenceRepository {
     }
 
     private void cargarConferencia() {
-        ConferenceEntity objCliente1 = new ConferenceEntity(1, "Google Chrome", "Bogota", new Date(), "navegadores web",
-                "YYYY", "312745433");
+        ConferenceEntity objCliente1 = new ConferenceEntity(1, "Google Chrome", new Date(), new Date(), "navegadores web",
+                "YYYY");
         this.listaConferencias.add(objCliente1);
-        ConferenceEntity objCliente2 = new ConferenceEntity(2, "Chat gpt ", "Bogota", new Date(),
-                "inteligencia artificial", "YYYY", "354655768");
+        ConferenceEntity objCliente2 = new ConferenceEntity(2, "Chat gpt ", new Date(), new Date(),
+                "inteligencia artificial", "YYYY");
         this.listaConferencias.add(objCliente2);
-        ConferenceEntity objCliente3 = new ConferenceEntity(3, "Bases de Datos", "manizales", new Date(),
-                "bases de datos", "YYYY", "38668862");
+        ConferenceEntity objCliente3 = new ConferenceEntity(3, "Bases de Datos", new Date(), new Date(),
+                "bases de datos", "YYYY");
         this.listaConferencias.add(objCliente3);
 
     }

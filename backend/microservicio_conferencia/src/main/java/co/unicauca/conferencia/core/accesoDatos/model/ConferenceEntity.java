@@ -12,11 +12,10 @@ import lombok.Setter;
 public class ConferenceEntity {
     private Integer id;
     private String nombre;
-    private String lugar;
-    private Date fecha;
+    private Date fechaInicio;
+    private Date fechaFin;
     private String tema;
     private String descripcion;
-    private String contacto;
 
     public ConferenceEntity() {
     }

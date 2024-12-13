@@ -26,7 +26,7 @@ public class RevisionServices {
     private Client client;
 
     public RevisionServices() {
-        this.endPoint = "http://localhost:2110/api/revision";
+        this.endPoint = "http://localhost:2110/api/revisiones";
         this.client = ClientBuilder.newClient().register(new JacksonFeature());
     }
     

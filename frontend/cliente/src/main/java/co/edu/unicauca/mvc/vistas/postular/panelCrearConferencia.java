@@ -45,13 +45,11 @@ public class panelCrearConferencia extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldFechaInicio = new javax.swing.JTextField();
         jTextFieldFechaFin = new javax.swing.JTextField();
         jTextFieldTema = new javax.swing.JTextField();
         jTextFieldDescripcion = new javax.swing.JTextField();
-        jTextFieldPonentes = new javax.swing.JTextField();
         jButtonRegistrar = new javax.swing.JButton();
         jButtonConsultar = new javax.swing.JButton();
 
@@ -83,10 +81,6 @@ public class panelCrearConferencia extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setText("DESCRIPCION");
-
-        jLabel10.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText("PONENTES");
 
         jButtonRegistrar.setBackground(new java.awt.Color(145, 173, 180));
         jButtonRegistrar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 18)); // NOI18N
@@ -127,10 +121,8 @@ public class panelCrearConferencia extends javax.swing.JPanel {
                         .addComponent(jLabel8)
                         .addGap(93, 93, 93))
                     .addComponent(jLabel9)
-                    .addComponent(jLabel10)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextFieldPonentes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                        .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                         .addComponent(jTextFieldTema, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addGap(17, 17, 17))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -167,13 +159,9 @@ public class panelCrearConferencia extends javax.swing.JPanel {
                     .addComponent(jTextFieldFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel7))
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldPonentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTextFieldFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonConsultar)
@@ -218,12 +206,11 @@ public class panelCrearConferencia extends javax.swing.JPanel {
         String nombre = jTextFieldNombre.getText();
         String tema = jTextFieldTema.getText();
         String descripcion = jTextFieldDescripcion.getText();
-        String ponentes = jTextFieldPonentes.getText();
         String fechaInicioStr = jTextFieldFechaInicio.getText();
         String fechaFinStr = jTextFieldFechaFin.getText();
 
         // Validar que los campos no estén vacíos
-        if (nombre.isEmpty() || tema.isEmpty() || descripcion.isEmpty() || ponentes.isEmpty() || fechaInicioStr.isEmpty() || fechaFinStr.isEmpty()) {
+        if (nombre.isEmpty() || tema.isEmpty() || descripcion.isEmpty() || fechaInicioStr.isEmpty() || fechaFinStr.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             return; // Detener la ejecución si hay campos vacíos
         }
@@ -243,7 +230,6 @@ public class panelCrearConferencia extends javax.swing.JPanel {
         conferencia.setNombre(nombre);
         conferencia.setTema(tema);
         conferencia.setDescripcion(descripcion);
-        conferencia.setPonente(ponentes);
         conferencia.setFechaInicio(fechaInicio);
         conferencia.setFechaFin(fechaFin);
 
@@ -270,7 +256,6 @@ public class panelCrearConferencia extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonRegistrar;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -283,7 +268,6 @@ public class panelCrearConferencia extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldFechaFin;
     private javax.swing.JTextField jTextFieldFechaInicio;
     private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldPonentes;
     private javax.swing.JTextField jTextFieldTema;
     // End of variables declaration//GEN-END:variables
 }

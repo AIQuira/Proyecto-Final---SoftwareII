@@ -15,8 +15,7 @@ import co.unicauca.conferencia.core.fachadaServices.DTO.ConferenceDTO;
  * Implementación de los servicios de la conferencia
  */
 @Service
-public class ConferenceServiceImpl implements IConferenceService
-{
+public class ConferenceServiceImpl implements IConferenceService {
 
     @Autowired
     private ConferenceRepository servicioAccesoBD;
@@ -31,36 +30,38 @@ public class ConferenceServiceImpl implements IConferenceService
 
     @Override
     public List<ConferenceDTO> findAll() {
-        
+
         List<ConferenceEntity> conferencesEntity = this.servicioAccesoBD.findAll();
-        List<ConferenceDTO> conferencesDTO = this.modelMapper.map(conferencesEntity, new TypeToken<List<ConferenceDTO>>() {}.getType());
+        List<ConferenceDTO> conferencesDTO = this.modelMapper.map(conferencesEntity,
+                new TypeToken<List<ConferenceDTO>>() {
+                }.getType());
         return conferencesDTO;
-        
+
     }
 
     @Override
     public ConferenceDTO save(ConferenceDTO conference) {
-    
+
         ConferenceEntity conferenceEntity = this.modelMapper.map(conference, ConferenceEntity.class);
         ConferenceEntity objConferenceEntity = this.servicioAccesoBD.save(conferenceEntity);
         ConferenceDTO conferenceDto = this.modelMapper.map(objConferenceEntity, ConferenceDTO.class);
 
         return conferenceDto;
-    
+
     }
 
     @Override
     public ConferenceDTO findById(Integer id) {
-        
+
         ConferenceEntity conferenceEntity = this.servicioAccesoBD.findById(id);
         ConferenceDTO conferenceDTO = this.modelMapper.map(conferenceEntity, ConferenceDTO.class);
         return conferenceDTO;
 
-    }    
+    }
 
     @Override
     public ConferenceDTO update(Integer id, ConferenceDTO conference) {
-        
+
         ConferenceEntity conferenceEntity = this.modelMapper.map(conference, ConferenceEntity.class);
         ConferenceEntity objConferenceEntity = this.servicioAccesoBD.update(id, conferenceEntity);
         ConferenceDTO conferenceDto = this.modelMapper.map(objConferenceEntity, ConferenceDTO.class);
@@ -71,22 +72,23 @@ public class ConferenceServiceImpl implements IConferenceService
 
     @Override
     public boolean delete(Integer id) {
-        
+
         return this.servicioAccesoBD.delete(id);
 
     }
 
     @Override
     public ConferenceDTO findByName(String nombre) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByName'");
+        ConferenceEntity conferenceEntity = this.servicioAccesoBD.findByName(nombre);
+        ConferenceDTO conferenceDTO = this.modelMapper.map(conferenceEntity, ConferenceDTO.class);
+        return conferenceDTO;
     }
 
     @Override
     public ConferenceDTO findByDate(String fecha) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByDate'");
+        ConferenceEntity conferenceEntity = this.servicioAccesoBD.findByfecha(fecha);
+        ConferenceDTO conferenceDTO = this.modelMapper.map(conferenceEntity, ConferenceDTO.class);
+        return conferenceDTO;
     }
-
 
 }

@@ -3,16 +3,12 @@ package co.edu.unicauca.mvc.modelos;
 import java.util.Date;
 
 public class Conferencia {
-    private int idConferencia;
+    private int id;
     private String nombre;
-    private String lugar;
+    private Date fechaInicio;
+    private Date fechaFin;  
     private String tema;
     private String descripcion;
-    private String contacto;
-    private Date fechaInicio;
-    private Date fechaFin;   
-    private float costoInscripcion;
-    private String ponente;
     private Organizador organizador;
     
     public Conferencia(){
@@ -20,25 +16,21 @@ public class Conferencia {
     }
 
     public Conferencia(int idConferencia, String nombre, String lugar, String tema, String descripcion, String contacto, Date fechaInicio, Date fechaFin, float costoInscripcion, Organizador organizador, String ponente) {
-        this.idConferencia = idConferencia;
+        this.id = idConferencia;
         this.nombre = nombre;
-        this.lugar = lugar;
         this.tema = tema;
         this.descripcion = descripcion;
-        this.contacto = contacto;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.costoInscripcion = costoInscripcion;
         this.organizador = organizador;
-        this.ponente = ponente;
     }
 
-    public int getIdConferencia() {
-        return idConferencia;
+    public int getId() {
+        return id;
     }
 
-    public void setIdConferencia(int idConferencia) {
-        this.idConferencia = idConferencia;
+    public void setId(int id) {
+        this.id = id;
     }
     
     
@@ -48,14 +40,6 @@ public class Conferencia {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getLugar() {
-        return lugar;
-    }
-
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
     }
 
     public String getTema() {
@@ -74,14 +58,6 @@ public class Conferencia {
         this.descripcion = descripcion;
     }
 
-    public String getContacto() {
-        return contacto;
-    }
-
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
-    }
-    
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -98,23 +74,6 @@ public class Conferencia {
         this.fechaFin = fechaFin;
     }
 
-
-    public float getCostoInscripcion() {
-        return costoInscripcion;
-    }
-
-    public void setCostoInscripcion(float costoInscripcion) {
-        this.costoInscripcion = costoInscripcion;
-    }
-    
-     public String getPonente() {
-        return ponente;
-    }
-
-    public void setPonente(String ponente) {
-        this.ponente = ponente;
-    }
-    
     @Override
     public String toString()
     {

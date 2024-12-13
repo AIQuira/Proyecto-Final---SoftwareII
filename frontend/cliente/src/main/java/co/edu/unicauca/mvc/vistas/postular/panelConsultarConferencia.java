@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import co.edu.unicauca.mvc.modelos.Conferencia;
 import co.edu.unicauca.isii.services.ConferenciaServices;
 import co.edu.unicauca.isii.services.ServicesFacade;
+import java.util.List;
 
 /**
  *
@@ -128,19 +129,33 @@ public class panelConsultarConferencia extends javax.swing.JFrame {
        String fecha = jTextFieldConsultarporFecha.getText();
        
        // Validar que los campos no estén vacíos
-        if (nombre.isEmpty() || fecha.isEmpty()) {
+        if (nombre.isEmpty() && fecha.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un nombre o una fecha para buscar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        return;
+            return;
+        } else if (fecha.isEmpty()){
+            Conferencia conferenciaEncontrada = servicesFacade.buscarPorNombre(nombre);
+            // Mostrar mensaje según el resultado del registro
+            if (conferenciaEncontrada != null) {
+                JOptionPane.showMessageDialog(this, "Conferencia encontrada", "Información", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al consultar la conferencia", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if (nombre.isEmpty()){
+            Conferencia conferenciaEncontrada = servicesFacade.buscarPorFecha(fecha);
+            // Mostrar mensaje según el resultado del registro
+            if (conferenciaEncontrada != null) {
+                JOptionPane.showMessageDialog(this, "Conferencia encontrada", "Información", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al consultar la conferencia", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        
-        //List<Conferencia> conferenciasEncontradas = buscarConferencias(nombre, fecha);
         
        
     }//GEN-LAST:event_jButtonConsultarConferenciaActionPerformed
 
     private void jButtonListadoConferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListadoConferenciasActionPerformed
-        panelListarConferencias objpanelListarConferencias= 
-                new panelListarConferencias(this.servicesFacade);
+        panelListarConferencias1 objpanelListarConferencias= 
+                new panelListarConferencias1(this.servicesFacade);
         objpanelListarConferencias.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         objpanelListarConferencias.setVisible(true);
     }//GEN-LAST:event_jButtonListadoConferenciasActionPerformed

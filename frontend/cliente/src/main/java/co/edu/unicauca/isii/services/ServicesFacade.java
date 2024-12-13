@@ -70,6 +70,14 @@ public class ServicesFacade {
     public Boolean eliminarConferencia (Integer id) {
         return conferenciaServices.eliminarConferencia(id);
     }
+    
+    public Conferencia buscarPorNombre (String nombre) {
+        return conferenciaServices.buscarPorNombre(nombre);
+    }
+    
+    public Conferencia buscarPorFecha (String fecha) {
+        return conferenciaServices.buscarPorFechaInicio(fecha);
+    }
 
     //Métodos para interactuar con RevisionService
     public Revision registrarRevision (Revision revision) {

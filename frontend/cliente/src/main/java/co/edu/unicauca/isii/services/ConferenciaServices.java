@@ -69,4 +69,20 @@ public class ConferenciaServices {
         bandera = objPeticion.delete(Boolean.class);
         return bandera;
     }
+    
+    public Conferencia buscarPorNombre (String nombre) {
+        Conferencia objConferencia = null;
+        WebTarget target = client.target(this.endPoint+"/buscarNombre/").path(String.valueOf(nombre));
+        Invocation.Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
+        objConferencia = objPeticion.get(Conferencia.class);
+        return objConferencia;
+    }
+    
+    public Conferencia buscarPorFechaInicio (String fecha){
+        Conferencia objConferencia = null;
+        WebTarget target = client.target(this.endPoint+"/buscarFecha/").path(String.valueOf(fecha));
+        Invocation.Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
+        objConferencia = objPeticion.get(Conferencia.class);
+        return objConferencia;
+    }
 }

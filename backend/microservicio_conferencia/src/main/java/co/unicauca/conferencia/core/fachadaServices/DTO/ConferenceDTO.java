@@ -1,5 +1,7 @@
 package co.unicauca.conferencia.core.fachadaServices.DTO;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,11 +13,10 @@ import lombok.Setter;
 public class ConferenceDTO {
     private Integer id;
     private String nombre;
-    private String lugar;
-    private String fecha;
+    private Date fechaInicio;
+    private Date fechaFin;
     private String tema;
     private String descripcion;
-    private String contacto;
 
     public ConferenceDTO() {
     }
