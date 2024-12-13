@@ -15,6 +15,6 @@ Carpeta Drive - Documentos: https://drive.google.com/drive/folders/142GEDCpdYzyL
 
 Prototipos: https://www.figma.com/design/qIMCXCpxB3ADYrEbtQZ4b8/FemTech?node-id=0-1&t=lJHpOrHlHvxGt30V-1
 
-Enlace video sustentación: 
+Enlace video sustentación: https://youtu.be/XqwemzweNV8
 
 Gestión proyecto - Trello: https://trello.com/invite/b/67092be41876472dd7883656/ATTIf094c1dea0581a31546b20ea8e79dbbaE04537CF/agile-sprint-board-femtech
