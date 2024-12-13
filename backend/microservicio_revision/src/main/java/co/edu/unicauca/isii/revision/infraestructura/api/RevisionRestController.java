@@ -1,46 +1,47 @@
 package co.edu.unicauca.isii.revision.infraestructura.api;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.unicauca.isii.revision.aplicacion.servicios.IRevisionService;
-import co.edu.unicauca.isii.revision.infraestructura.fachada.DTO.RevisionDTO;
-import co.edu.unicauca.isii.revision.infraestructura.fachada.DTO.RevisorConArticulos.ArticuloDTO;
-
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.PutMapping;
-
-import java.util.List;
+import co.edu.unicauca.isii.revision.dominio.modelo.RevisionEntity;
+import co.edu.unicauca.isii.revision.dominio.puerto.RevisionServicePort;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/revisiones")
 public class RevisionRestController {
 
-    @Autowired
-    private IRevisionService revisionService;
+    private final RevisionServicePort revisionService;
 
-    @PostMapping("/revision")
-    public RevisionDTO crearRevision(@RequestBody RevisionDTO revision) {
-        return this.revisionService.guardarRevision(revision);
+    public RevisionRestController(RevisionServicePort revisionService) {
+        this.revisionService = revisionService;
     }
 
-    @GetMapping("/revision")
-    public List<RevisionDTO> listarRevisiones() {
-        return this.revisionService.listarRevisiones();
+    @PostMapping
+    public RevisionEntity guardarRevision(@RequestBody RevisionEntity revision) {
+        return revisionService.crearRevision(revision);
     }
 
-    @GetMapping("/revision/articulos/{idRevisor}")
-    public List<ArticuloDTO> listarArticulosDeRevisor(@PathVariable Integer idRevisor) {
-        return this.revisionService.listarArticulosDeRevisor(idRevisor);
+    @GetMapping
+    public List<RevisionEntity> listarRevisiones() {
+        return revisionService.obtenerRevisiones();
     }
 
-    /*@PutMapping("/revision/calificar/{id}")
-    public String calificarArticulo(@PathVariable Integer id, @RequestBody int calificacion) {
-        boolean resultado = this.revisionService.calificarArticulo(id, calificacion);
-        return resultado ? "Calificación aplicada con éxito" : "No se pudo aplicar la calificación";
-    }*/
+    @GetMapping("/{id}")
+    public RevisionEntity buscarRevisionPorId(@PathVariable Integer id) {
+        return revisionService.buscarRevisionPorId(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean eliminarRevision(@PathVariable Integer id) {
+        return revisionService.eliminarRevision(id);
+    }
 }
+

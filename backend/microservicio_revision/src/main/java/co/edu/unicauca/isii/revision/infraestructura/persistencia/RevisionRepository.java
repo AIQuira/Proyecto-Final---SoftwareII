@@ -1,4 +1,4 @@
-package co.edu.unicauca.isii.revision.dominio.repositorio;
+package co.edu.unicauca.isii.revision.infraestructura.persistencia;
 
 import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
